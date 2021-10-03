@@ -1,0 +1,33 @@
+*.orig
+xcuserdata/
+UserInterfaceState.xcuserstate/*
+*~
+.DS_Store
+*.xcworkspace/*
+#*.xcscheme
+xcschememanagement.plist
+*.xcuserdatad
+xcshareddata/*
+xcuserdata/*
+
+# CocoaPods
+Pods/
+Carthage/
+
+# other
+.idea
+
+DSYM
+*/fastlane/report.xml
+*/fastlane/README.md
+*/fastlane/mappings
+
+#SwiftyMocky
+default.profraw
+SwiftyMocky
+
+artifacts
+
+Allabout\.me/Allabout\.me\.xcworkspace/xcshareddata/IDEWorkspaceChecks\.plist
+*/.bundle/config
+*.xctimeline
