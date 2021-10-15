@@ -11,6 +11,10 @@
 		0B703E562709BBB10079E2C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B703E552709BBB10079E2C8 /* ContentView.swift */; };
 		0B703E582709BBB40079E2C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B703E572709BBB40079E2C8 /* Assets.xcassets */; };
 		0B703E5B2709BBB40079E2C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B703E5A2709BBB40079E2C8 /* Preview Assets.xcassets */; };
+		0B703E622709C6230079E2C8 /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B703E612709C6230079E2C8 /* FirstScreen.swift */; };
+		0B703E642709C6410079E2C8 /* SecondScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B703E632709C6410079E2C8 /* SecondScreen.swift */; };
+		0B703E662709C6510079E2C8 /* ThirdScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B703E652709C6510079E2C8 /* ThirdScreen.swift */; };
+		0BA56E022719D2C900E0B22C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA56E012719D2C900E0B22C /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		0B703E552709BBB10079E2C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0B703E572709BBB40079E2C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B703E5A2709BBB40079E2C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B703E612709C6230079E2C8 /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
+		0B703E632709C6410079E2C8 /* SecondScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondScreen.swift; sourceTree = "<group>"; };
+		0B703E652709C6510079E2C8 /* ThirdScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdScreen.swift; sourceTree = "<group>"; };
+		0BA56E012719D2C900E0B22C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,10 @@
 				0B703E552709BBB10079E2C8 /* ContentView.swift */,
 				0B703E572709BBB40079E2C8 /* Assets.xcassets */,
 				0B703E592709BBB40079E2C8 /* Preview Content */,
+				0B703E612709C6230079E2C8 /* FirstScreen.swift */,
+				0B703E632709C6410079E2C8 /* SecondScreen.swift */,
+				0B703E652709C6510079E2C8 /* ThirdScreen.swift */,
+				0BA56E012719D2C900E0B22C /* Router.swift */,
 			);
 			path = HomeworkSerber;
 			sourceTree = "<group>";
@@ -138,7 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B703E562709BBB10079E2C8 /* ContentView.swift in Sources */,
+				0B703E642709C6410079E2C8 /* SecondScreen.swift in Sources */,
+				0B703E662709C6510079E2C8 /* ThirdScreen.swift in Sources */,
 				0B703E542709BBB10079E2C8 /* HomeworkSerberApp.swift in Sources */,
+				0BA56E022719D2C900E0B22C /* Router.swift in Sources */,
+				0B703E622709C6230079E2C8 /* FirstScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

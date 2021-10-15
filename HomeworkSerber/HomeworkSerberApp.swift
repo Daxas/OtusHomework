@@ -2,7 +2,7 @@
 //  HomeworkSerberApp.swift
 //  HomeworkSerber
 //
-//  Created by allme on 03.10.2021.
+//  Created by Daxas on 03.10.2021.
 //
 
 import SwiftUI
@@ -12,6 +12,8 @@ struct HomeworkSerberApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(SecondScreenViewModel())
+                .environmentObject(Router())
         }
     }
 }
