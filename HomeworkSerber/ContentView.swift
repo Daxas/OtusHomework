@@ -10,28 +10,35 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var router: Router
-    @State private var isModal = false
+    @EnvironmentObject var incomeData: IncomeData
     
     var body: some View {
         TabView(selection: $router.selection) {
-            FirstScreen()
+            TextScreen()
                 .tabItem {
-                    Text("First")
-                    Image(systemName: "star")
+                    Text("Text")
+                    Image(systemName: "menucard")
                 }
                 .tag(0)
-            SecondScreen()
+            ResultsScreen()
                 .tabItem {
-                    Text("Second")
-                    Image(systemName: "message")
+                    Text("Results")
+                    Image(systemName: "magnifyingglass")
                 }
                 .tag(1)
-            ThirdScreen(isModal: $isModal)
-                .tabItem {
-                    Text("Third")
-                    Image(systemName: "person")
-                }
-                .tag(2)
+        }
+        
+        .onOpenURL { url in
+            if url == URL(string: "homework:///text") {
+                self.router.selection = 0
+            }
+            if url == URL(string: "homework:///results") {
+                self.router.selection = 1
+            }
+        }
+        
+        .onAppear {
+            incomeData.text = UIPasteboard.general.string ?? ""
         }
     }
 }

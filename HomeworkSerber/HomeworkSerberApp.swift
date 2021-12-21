@@ -12,8 +12,8 @@ struct HomeworkSerberApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(SecondScreenViewModel())
                 .environmentObject(Router())
+                .environmentObject(IncomeData())
         }
     }
 }

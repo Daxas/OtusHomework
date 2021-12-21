@@ -9,17 +9,25 @@ import SwiftUI
 import UIKit
 import Foundation
 
-struct FirstScreen: View {
+struct TextScreen: View {
     
     @EnvironmentObject var router: Router
-    
+    @EnvironmentObject var incomeData: IncomeData
+
     var body: some View {
-        MyCustomButton() {
-            router.selection = 1
-            router.isSymbolShowed = true
+        VStack {
+            Spacer(minLength: 60)
+            Text("Enter your text")
+                .padding()
+            TextEditor(text: $incomeData.text)
+                .colorMultiply(.gray)
+                .cornerRadius(10)
+                .padding()
+            MyCustomButton() {
+                router.selection = 1
+            }
+            .frame(width: 200, height: 200, alignment: .center)
         }
-        .frame(width: 200, height: 200, alignment: .center)
-        .padding(.top)
     }
 }
 
@@ -37,7 +45,7 @@ struct MyCustomButton: UIViewRepresentable {
         b.tintColor = .white
         b.layer.cornerRadius = 100
         b.backgroundColor = .purple.withAlphaComponent(0.7)
-        b.setTitle("Show symbol", for: .normal)
+        b.setTitle("Proceed", for: .normal)
         b.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         b.addTarget(context.coordinator, action: #selector(Coordinator.handler), for: .touchUpInside)
         return b
