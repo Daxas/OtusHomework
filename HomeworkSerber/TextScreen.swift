@@ -12,18 +12,19 @@ import Foundation
 struct TextScreen: View {
     
     @EnvironmentObject var router: Router
-    @EnvironmentObject var incomeData: IncomeData
+    @EnvironmentObject var model: SuffixResultViewModel
 
     var body: some View {
         VStack {
             Spacer(minLength: 60)
             Text("Enter your text")
                 .padding()
-            TextEditor(text: $incomeData.text)
+            TextEditor(text: $model.text)
                 .colorMultiply(.gray)
                 .cornerRadius(10)
                 .padding()
             MyCustomButton() {
+                model.process()
                 router.selection = 1
             }
             .frame(width: 200, height: 200, alignment: .center)

@@ -7,17 +7,25 @@
 
 import Foundation
 
+struct History {
+    var text: String
+    var searchingTime: Double
+}
+
+extension History: Identifiable {
+    public var id: String {
+        self.text
+    }
+}
+
 final class SuffixResultViewModel: ObservableObject {
     
     @Published var sortedResults: [Suffix] = .init()
     @Published var reversedSortedResults: [Suffix] = .init()
     @Published var topTenResults: [Suffix] = .init()
+    @Published var history: [History] = .init()
     
-    var text: String = "" {
-        didSet {
-            proceedText()
-        }
-    }
+    var text: String = ""
     
     init(topTenSuffixLenght: Int = 3) {
         self.topTenSuffixLenght = topTenSuffixLenght
@@ -25,7 +33,23 @@ final class SuffixResultViewModel: ObservableObject {
     
     private let topTenSuffixLenght: Int
     
-    func proceedText() {
+    private var workItem: DispatchWorkItem?
+    
+    func process() {
+        workItem?.cancel()
+        let newWorkItem = DispatchWorkItem {
+            let startTime = CFAbsoluteTimeGetCurrent()
+            self.proceedText()
+            let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
+            DispatchQueue.main.async {
+                self.history.append(History(text: self.text, searchingTime: timeElapsed))
+            }
+        }
+        workItem = newWorkItem
+        DispatchQueue.global().async(execute: newWorkItem)
+    }
+    
+    private func proceedText() {
         let words: [String] = self.text.components(separatedBy: [" ", ".", ",", "!", "?", ":", ";", "(", ")"])
         var suffixDictionary = [String : Int]()
         for word in words {
@@ -50,8 +74,10 @@ final class SuffixResultViewModel: ObservableObject {
         for (key, value) in sortedKeys {
             arr.append(Suffix(suffixPattern: key, count: value))
         }
-        sortedResults = arr
-        reversedSortedResults = arr.reversed()
+        DispatchQueue.main.async {
+            self.sortedResults = arr
+            self.reversedSortedResults = arr.reversed()
+        }
     }
     
     private func makeTopTenResults(for suffixDictionary: [String: Int]) {
@@ -62,7 +88,9 @@ final class SuffixResultViewModel: ObservableObject {
         for (key, value) in topTen {
             arr.append(Suffix(suffixPattern: key, count: value))
         }
-        topTenResults = arr
+        DispatchQueue.main.async {
+            self.topTenResults = arr
+        }
     }
     
     private func makeWidgetResults(for suffixDictionary: [String: Int]) {

@@ -9,21 +9,12 @@ import SwiftUI
 
 struct ResultsScreen: View {
     
-    @EnvironmentObject var incomeData: IncomeData
-    
-    @StateObject var suffixResults = SuffixResultViewModel()
+    @EnvironmentObject var suffixResults: SuffixResultViewModel
     
     @State var resultsChoice = 0
     @State var isASCSorted = true
     
     var body: some View {
-        resultsPicker
-            .onAppear {
-                suffixResults.text = incomeData.text
-            }
-    }
-    
-    var resultsPicker: some View {
         ScrollView {
             VStack {
                 Picker.init("Results", selection: $resultsChoice) {
@@ -44,7 +35,7 @@ struct ResultsScreen: View {
             .frame(minHeight: 1000)
         }
     }
-
+    
     private static let resultsTypes = ["Sorted", "Top 10"]
     
     var sortedList: some View {

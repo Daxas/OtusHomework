@@ -13,7 +13,7 @@ struct HomeworkSerberApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(Router())
-                .environmentObject(IncomeData())
+                .environmentObject(SuffixResultViewModel())
         }
     }
 }

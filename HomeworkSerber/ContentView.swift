@@ -10,22 +10,31 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var router: Router
-    @EnvironmentObject var incomeData: IncomeData
+    @EnvironmentObject var model: SuffixResultViewModel
     
     var body: some View {
         TabView(selection: $router.selection) {
             TextScreen()
+                .environmentObject(model)
                 .tabItem {
                     Text("Text")
                     Image(systemName: "menucard")
                 }
                 .tag(0)
             ResultsScreen()
+                .environmentObject(model)
                 .tabItem {
                     Text("Results")
                     Image(systemName: "magnifyingglass")
                 }
                 .tag(1)
+            HistoryScreen()
+                .environmentObject(model)
+                .tabItem {
+                    Text("History")
+                    Image(systemName: "clock")
+                }
+                .tag(2)
         }
         
         .onOpenURL { url in
@@ -38,13 +47,7 @@ struct ContentView: View {
         }
         
         .onAppear {
-            incomeData.text = UIPasteboard.general.string ?? ""
+            model.text = UIPasteboard.general.string ?? ""
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
